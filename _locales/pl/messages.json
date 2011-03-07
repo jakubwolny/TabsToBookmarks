@@ -1,0 +1,17 @@
+{
+  "extension_name": {
+    "message": "Karty do Zakładek"
+  },
+  "extension_description": {
+    "message": "Dodatek dodający otwarte karty do utworzonego folderu w Zakładkach"
+  },
+  "browser_action_title": {
+    "message": "Zapisz Karty do Zakładek!"
+  },
+  "new_folder": {
+    "message": "Nowy folder"
+  },
+  "add": {
+    "message": "Dodaj"
+  }
+}

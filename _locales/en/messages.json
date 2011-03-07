@@ -1,0 +1,17 @@
+{
+  "extension_name": {
+    "message": "Tabs to Bookmarks"
+  },
+  "extension_description": {
+    "message": "Extension to add all tabs in window to specify folder in Bookmarks"
+  },
+  "browser_action_title": {
+    "message": "Tabs to Bookmarks"
+  },
+  "new_folder": {
+    "message": "New folder"
+  },
+  "add": {
+    "message": "Add"
+  }
+}
