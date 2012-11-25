@@ -1,14 +1,17 @@
 window.onload = function(){
     document.getElementById('folder').value = chrome.i18n.getMessage("new_folder");
     document.getElementById('submit').value = chrome.i18n.getMessage("add");
-
-    document.getElementById('submit').addEventListener('click', function(){
+    
+    document.getElementById('form').addEventListener('submit', function(e){
+        e.preventDefault();
+        
         chrome.windows.getCurrent(function(win){
             chrome.tabs.getAllInWindow(win.id, function(tabs) {
                 chrome.bookmarks.getTree(function(results){
-                    chrome.bookmarks.create({'parentId': results[0].children[1].id,
-                        'title': document.getElementById('folder').value},
-                    function(folder) {
+                    chrome.bookmarks.create({
+                        'parentId': results[0].children[1].id,
+                        'title': document.getElementById('folder').value
+                    }, function(folder) {
                         for(var i = 0; i < tabs.length; i++){
                             chrome.bookmarks.create({'parentId': folder.id,
                                 'title': tabs[i].title,
@@ -19,6 +22,7 @@ window.onload = function(){
                 });
             })
         });
+        return false;
     });   
 }
 
