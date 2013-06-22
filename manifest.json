@@ -12,7 +12,8 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "bookmarks", "tabs"
+    "bookmarks", 
+    "tabs"
   ],
   "icons": {
     "16": "img/icon16.png",

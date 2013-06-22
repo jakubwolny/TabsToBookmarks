@@ -5,26 +5,27 @@ window.onload = function(){
     document.getElementById('form').addEventListener('submit', function(e){
         e.preventDefault();
         
-        chrome.windows.getCurrent(function(win){
-            chrome.tabs.getAllInWindow(win.id, function(tabs) {
-                chrome.bookmarks.getTree(function(results){
-                    chrome.bookmarks.create({
-                        'parentId': results[0].children[1].id,
-                        'title': document.getElementById('folder').value
-                    }, function(folder) {
-                        for(var i = 0; i < tabs.length; i++){
-                            chrome.bookmarks.create({'parentId': folder.id,
-                                'title': tabs[i].title,
-                                'url': tabs[i].url});
-                        }
-                        window.close();
-                    });
+        chrome.windows.getCurrent({
+            populate: true
+        }, function(win){
+            chrome.bookmarks.getTree(function(results){
+                chrome.bookmarks.create({
+                    parentId: results[0].children[1].id,
+                    title: document.getElementById('folder').value
+                }, function(folder) {
+                    for(var i = 0; i < win.tabs.length; i++){
+                        chrome.bookmarks.create({
+                            parentId: folder.id,
+                            title: win.tabs[i].title,
+                            url: win.tabs[i].url
+                        });
+                    }
                 });
-            })
+            });
         });
         return false;
     });   
-}
+};
 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-7218577-44']);
