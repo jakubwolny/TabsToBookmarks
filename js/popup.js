@@ -20,6 +20,7 @@ window.onload = function(){
                             url: win.tabs[i].url
                         });
                     }
+                    window.close();
                 });
             });
         });
